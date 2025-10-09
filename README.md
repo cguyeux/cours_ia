@@ -28,3 +28,4 @@ Trois travaux pratiques sont proposés pour découvrir et approfondir l'IA gén�
 1. [**TP1 — Premiers pas avec la génération de texte**](IA%20g%C3%A9n%C3%A9rative/TP1_LangChain_Mistral.md) : prise en main de LangChain et des modèles Mistral pour créer vos premiers prompts structurés.
 2. [**TP2 — Sorties structurées avec LangChain et Mistral**](IA%20g%C3%A9n%C3%A9rative/TP2_Sorties_Structurees.md) : fiabilisation des réponses LLM à l'aide de schémas Pydantic et de chaînes orientées extraction d'informations.
 3. [**TP3 — Systèmes RAG et vector stores**](IA%20g%C3%A9n%C3%A9rative/TP3_RAG_Embeddings.md) : conception d'un pipeline de retrieval augmented generation s'appuyant sur des embeddings et une base vectorielle.
+4. [**TP4 — Les agents**](IA%20g%C3%A9n%C3%A9rative/TP4_Agents_LangChain.md)
