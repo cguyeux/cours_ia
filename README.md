@@ -14,5 +14,6 @@
 5. [**TP5 – Régression**](Cours/TP5_Regression/TP_Regression_Validation.md) : mise en place d'un pipeline de régression et analyse des métriques associées.
 6. [**TP6 – Objectifs et métriques XGBoost**](Cours/TP6_XGBoost_Objectif_Metriques/TP6_XGBoost_Objectif_Metriques.md) *(facultatif)* : exploration d'objectifs personnalisés et des métriques avancées pour XGBoost.
 7. [**TP7 – Prétraitement des variables**](Cours/TP7_Pretraitement_Variables/TP_Pretraitement_Variables.md) *(facultatif)* : techniques de sélection, normalisation, encodage et traitement des données déséquilibrées.
+8. [**TP8 – Explicabilité et causalité avec XGBoost**](Cours/TP8_XGBoost_Explicabilite_Causalite/TP8_XGBoost_Explicabilite_Causalite.md) *(facultatif)* : analyse des importances, valeurs SHAP et introduction à l'inférence causale.
 
-Les TP 6 et 7 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
+Les TP 6, 7 et 8 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
