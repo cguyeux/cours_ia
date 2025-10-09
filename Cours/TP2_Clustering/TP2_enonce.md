@@ -11,6 +11,8 @@ Dans un contexte marketing, segmenter un portefeuille clients permet par exemple
 > Figure 1 – Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.
 ![Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.](illustration_clustering.png)
 
+![Figure 1 – Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.](illustration_clustering.png)
+
 ## Algorithme K-Means
 
 K-Means est l'un des algorithmes de clustering les plus utilisés pour créer *k* groupes homogènes. Il repose sur la minimisation de la distance entre chaque point et le centre de son cluster.
@@ -32,6 +34,8 @@ Lorsque la courbe forme un coude, cela signifie que l'amélioration marginale de
 
 > Figure 2 – Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.
 ![Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.](illustration_elbow.png)
+
+![Figure 2 – Illustration de la méthode du coude : le point k = 5 matérialise un bon équilibre.](illustration_elbow.png)
 
 ## Contexte et objectifs
 
