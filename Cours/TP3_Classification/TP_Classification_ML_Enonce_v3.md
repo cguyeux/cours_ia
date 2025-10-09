@@ -95,14 +95,45 @@ Le TP utilisera le dataset **Breast Cancer Wisconsin**, intégré à scikit-lear
 
 ## Déroulé du TP
 
-1. Présentation des algorithmes.
-2. Chargement et exploration du dataset.
-3. Séparation des données en train/test et preprocessing.
-4. Entraînement des modèles.
-5. Évaluation via métriques globales (`accuracy`, `precision`, `recall`, `f1`).
-6. Visualisation (matrices de confusion).
-7. Analyse des importances de variables.
-8. Comparaison et discussion des résultats.
+Pour vous aider à progresser pas à pas, le TP est découpé en étapes opérationnelles. Chaque étape est l’occasion d’ajouter une
+nouvelle cellule à votre notebook et d’en commenter les résultats.
+
+1. **Préparer l’environnement de travail**
+   - Créez un nouveau notebook ou dupliquez le modèle fourni puis importez les bibliothèques nécessaires (`pandas`, `numpy`,
+     `matplotlib.pyplot`, `seaborn`, `sklearn`).
+   - Chargez le dataset Breast Cancer depuis `sklearn.datasets` et transformez-le en `DataFrame` pour faciliter l’exploration.
+   - Affichez la dimension des données, les noms de colonnes et les premières lignes pour vérifier le chargement.
+2. **Explorer le dataset**
+   - Recherchez des valeurs manquantes, examinez la distribution des classes et calculez quelques statistiques descriptives.
+   - Visualisez au moins une paire de variables (via `pairplot` ou `scatterplot`) pour repérer d’éventuelles séparations naturelles.
+   - Identifiez les corrélations fortes et notez les variables qui pourraient être redondantes.
+3. **Mettre en place la validation**
+   - Séparez les données en ensembles d’entraînement et de test avec `train_test_split`, en stratifiant sur la variable cible.
+   - Normalisez les features (StandardScaler ou MinMaxScaler) si nécessaire. Conservez la version brute si vous souhaitez comparer.
+   - Enregistrez la taille de chaque ensemble et justifiez le choix du ratio train/test.
+4. **Établir un modèle de référence (Decision Tree)**
+   - Entraînez un arbre de décision simple pour disposer d’un point de comparaison.
+   - Calculez les métriques principales sur le train et le test, puis discutez rapidement de la qualité du modèle.
+   - Affichez la matrice de confusion et, si possible, l’arbre ou les règles apprises.
+5. **Améliorer les performances (Random Forest)**
+   - Entraînez une Random Forest en commençant par les hyperparamètres par défaut.
+   - Testez au moins deux configurations différentes (par exemple nombre d’arbres ou profondeur maximale) et consignez les
+     résultats dans un tableau comparatif.
+   - Analysez l’importance des variables fournie par le modèle et commentez les trois variables les plus influentes.
+6. **Explorer un modèle plus avancé (XGBoost)**
+   - Installez/importez `xgboost` si nécessaire et entraînez un premier modèle avec les paramètres standards.
+   - Ajustez progressivement `learning_rate`, `max_depth` ou `n_estimators` en observant l’impact sur les métriques de test.
+   - Documentez les temps d’entraînement ou les difficultés rencontrées (gestion des paramètres, convergence, etc.).
+7. **Comparer et interpréter**
+   - Rassemblez les métriques principales (accuracy, precision, recall, f1-score) pour les trois modèles dans un tableau
+     synthétique et discutez des différences observées.
+   - Représentez les matrices de confusion et soulignez les zones d’erreurs communes ou spécifiques à chaque algorithme.
+   - Décrivez, à partir des importances de variables, les caractéristiques qui contribuent le plus à la décision.
+8. **Conclure et ouvrir**
+   - Rédigez un court paragraphe récapitulatif expliquant le modèle que vous retiendriez pour une mise en production et pourquoi.
+   - Listez les axes d’amélioration possibles : réglages supplémentaires, ajout de validation croisée, gestion de classes
+     déséquilibrées, interprétabilité avancée, etc.
+   - Vérifiez que le notebook est clair (titres, commentaires, conclusions) et prêt pour la remise.
 
 ## Livrables
 
