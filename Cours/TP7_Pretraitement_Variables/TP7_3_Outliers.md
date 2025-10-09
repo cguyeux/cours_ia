@@ -1,5 +1,7 @@
 # TP7.3 — Détection et traitement des outliers
 
+[⬅️ Retour au README](../../README.md)
+
 ## Positionnement pédagogique
 - **Durée indicative** : 2h30.
 - **Niveau** : BUT3 Informatique.

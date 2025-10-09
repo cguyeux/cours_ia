@@ -1,5 +1,7 @@
 # TP : Régression, validation croisée et contrôle de la complexité
 
+[⬅️ Retour au README](../../README.md)
+
 ## Objectifs pédagogiques
 
 - Comprendre la différence entre un problème de classification et un problème de régression.
