@@ -6,9 +6,10 @@
 - Mettre en œuvre des algorithmes de machine learning pour la classification et la régression.
 - Savoir évaluer et améliorer les performances des modèles en utilisant des métriques adaptées et des techniques de préparation des données.
 
-## Travaux pratiques
+## IA "prédictive"
 
 Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu proposer un contenu exhaustif afin de s'adapter aux profils variés des étudiants.
+
 1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage.
 2. [**TP2 – Clustering**](IA%20pr%C3%A9dictive/TP2_Clustering/TP2_enonce.md) : mise en œuvre d'algorithmes de regroupement non supervisé (k-means, analyse visuelle de l'inertie, etc.).
 3. [**TP3 – Classification supervisée**](IA%20pr%C3%A9dictive/TP3_Classification/TP_Classification_ML_Enonce_v3.md) : application d'algorithmes de classification et évaluation des performances.
@@ -19,3 +20,7 @@ Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu p
 8. [**TP8 – Explicabilité et causalité avec XGBoost**](IA%20pr%C3%A9dictive/TP8_XGBoost_Explicabilite_Causalite/TP8_XGBoost_Explicabilite_Causalite.md) *(facultatif)* : analyse des importances, valeurs SHAP et introduction à l'inférence causale.
 
 Les TP 6, 7 et 8 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
+
+## IA générative
+
+- [**Introduction aux LLM**](IA%20g%C3%A9n%C3%A9rative/Introduction_LLM.ipynb) : notebook interactif pour découvrir les bases des grands modèles de langage et expérimenter leurs usages.
