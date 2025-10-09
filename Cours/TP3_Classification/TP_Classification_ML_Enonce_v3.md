@@ -68,10 +68,23 @@ Exemple typique : 80 % pour l’entraînement et 20 % pour le test, en respectan
 
 Pour juger la qualité d’un modèle de classification, plusieurs métriques sont utilisées :
 
-- **Accuracy** : proportion de prédictions correctes.
-- **Precision** : parmi les prédictions positives, combien sont réellement positives ?
-- **Recall (sensibilité)** : parmi les vrais positifs, combien sont retrouvés par le modèle ?
-- **F1-score** : moyenne harmonique de la précision et du rappel, utile quand les classes sont déséquilibrées.
+- **Accuracy** : proportion globale de prédictions correctes. Elle reste utile si les classes sont équilibrées, mais peut masquer de fortes erreurs sur une classe minoritaire.
+- **Precision** : parmi les prédictions positives, quelle proportion est réellement positive ? Une précision de 80 % signifie que 20 % des prédictions positives sont en fait fausses (faux positifs).
+- **Recall (sensibilité)** : parmi les observations réellement positives, quelle proportion est détectée comme positive par le modèle ? Un rappel de 70 % signifie que 30 % des positifs n’ont pas été retrouvés (faux négatifs).
+- **F1-score** : moyenne harmonique de la précision et du rappel \(F1 = 2 \times \frac{precision \times recall}{precision + recall}\). Cette moyenne donne un score élevé uniquement si précision **et** rappel sont toutes deux bonnes, car la moyenne harmonique « pénalise » les valeurs très faibles.
+
+### Exemple « chat » vs. « chat siamois »
+
+Si l’on cherche des images de « chat siamois » sur Google :
+
+- Une requête générique « chat » renverra beaucoup d’images de chats, mais la plupart ne seront pas siamoises. On obtient un rappel élevé (on retrouve quasiment tous les chats siamois disponibles) mais une précision faible (car les résultats pertinents sont noyés parmi des chats d’autres races).
+- Une requête « chat siamois » renverra surtout des chats siamois. La précision est donc élevée (peu de faux positifs), mais le rappel peut être plus faible si Google écarte certaines images pertinentes mal étiquetées.
+
+Dans un moteur de recherche d’images :
+
+- **Maximiser le rappel** est crucial si l’utilisateur préfère voir trop de résultats plutôt que d’en manquer (par exemple un vétérinaire qui ne veut rater aucune image pertinente pour diagnostiquer une maladie rare chez le chat siamois).
+- **Maximiser la précision** est préférable si l’utilisateur valorise la qualité des premiers résultats affichés (par exemple un acheteur qui veut immédiatement des photos fidèles de chat siamois pour une annonce).
+- Le **F1-score** permet d’équilibrer ces deux exigences : si la précision ou le rappel chute, le score F1 baisse fortement. Il est donc pratique pour optimiser un modèle qui doit à la fois éviter les faux positifs et ne pas rater trop de vrais positifs.
 
 <https://www.youtube.com/watch?v=Kdsp6soqA7o>
 
