@@ -6,7 +6,8 @@ Le clustering est une famille de méthodes d'apprentissage non supervisé qui re
 
 Dans un contexte marketing, segmenter un portefeuille clients permet par exemple d'adapter les campagnes, optimiser les recommandations produit et mesurer la valeur de chaque groupe.
 
-> Figure 1 – Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.
+> Figure 1 – 
+![Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.](illustration_clustering.png)
 
 ## Algorithme K-Means
 
