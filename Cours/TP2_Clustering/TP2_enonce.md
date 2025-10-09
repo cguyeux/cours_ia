@@ -6,7 +6,7 @@ Le clustering est une famille de méthodes d'apprentissage non supervisé qui re
 
 Dans un contexte marketing, segmenter un portefeuille clients permet par exemple d'adapter les campagnes, optimiser les recommandations produit et mesurer la valeur de chaque groupe.
 
-> Figure 1 – 
+> Figure 1 – Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.
 ![Exemple de regroupement visuel de clients selon leur revenu annuel et leur score de dépenses.](illustration_clustering.png)
 
 ## Algorithme K-Means
@@ -29,6 +29,7 @@ La méthode du coude aide à sélectionner un *k* pertinent. On entraîne K-Mean
 Lorsque la courbe forme un coude, cela signifie que l'amélioration marginale de l'inertie devient faible : ce *k* constitue un bon compromis entre compacité des clusters et simplicité du modèle.
 
 > Figure 2 – Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.
+![Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.](illustration_clustering.png)
 
 ## Contexte et objectifs
 
