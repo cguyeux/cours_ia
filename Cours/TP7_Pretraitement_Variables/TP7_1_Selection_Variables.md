@@ -1,5 +1,7 @@
 # TP7.1 — Sélection de variables explicatives
 
+[⬅️ Retour au README](../../README.md)
+
 ## Positionnement pédagogique
 - **Durée indicative** : 3 heures.
 - **Niveau** : étudiants de 3e année de BUT Informatique (parcours IA/Data).

@@ -1,5 +1,7 @@
 # TP : Classification en Machine Learning
 
+[⬅️ Retour au README](../../README.md)
+
 ## Algorithmes de classification utilisés
 
 Avant de commencer le TP, nous allons présenter les algorithmes qui seront utilisés. Chaque méthode a ses forces, ses faiblesses et ses paramètres clés à optimiser. Des schémas et images sont fournis (liens ou générés automatiquement) pour aider à la compréhension.

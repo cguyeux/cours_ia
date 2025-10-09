@@ -1,5 +1,7 @@
 # TP Pandas (≈ 1h) — Dataset Iris
 
+[⬅️ Retour au README](../../README.md)
+
 ## Objectifs
 
 - Télécharger un jeu de données existant (Iris via scikit-learn), le charger dans pandas puis réaliser des manipulations et des visualisations avec matplotlib.

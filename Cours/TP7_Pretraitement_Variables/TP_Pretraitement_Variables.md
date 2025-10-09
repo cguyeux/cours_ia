@@ -1,5 +1,7 @@
 # Parcours TP7 — Prétraitement et sélection des variables
 
+[⬅️ Retour au README](../../README.md)
+
 Ce parcours est désormais scindé en **quatre TP complémentaires**, chacun dédié à une étape clé du prétraitement. Ils peuvent être réalisés indépendamment, mais il est recommandé de les suivre dans l'ordre afin de construire progressivement un pipeline robuste.
 
 | TP | Thématique principale | Compétences travaillées |

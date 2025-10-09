@@ -1,5 +1,7 @@
 # TP2 – Clustering par K-Means
 
+[⬅️ Retour au README](../../README.md)
+
 ## Introduction au clustering
 
 Le clustering est une famille de méthodes d'apprentissage non supervisé qui regroupe automatiquement des observations similaires. L'objectif est de révéler des structures latentes dans les données afin de mieux comprendre des comportements, personnaliser des offres ou détecter des anomalies.

@@ -1,5 +1,7 @@
 # TP7.2 — Normalisation et encodage des variables
 
+[⬅️ Retour au README](../../README.md)
+
 ## Positionnement pédagogique
 - **Durée indicative** : 3 heures.
 - **Niveau** : BUT3 Informatique.

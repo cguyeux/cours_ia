@@ -1,5 +1,7 @@
 # TP 6 : XGBoost – Fonctions objectives et métriques
 
+[⬅️ Retour au README](../../README.md)
+
 ## Objectifs pédagogiques
 
 - Comprendre le rôle de la fonction objective dans XGBoost et savoir la choisir selon le problème.
