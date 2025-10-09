@@ -23,4 +23,8 @@ Les TP 6, 7 et 8 sont proposés pour aller plus loin et peuvent être réalisés
 
 ## IA générative
 
-- [**Introduction aux LLM**](IA%20g%C3%A9n%C3%A9rative/Introduction_LLM.ipynb) : notebook interactif pour découvrir les bases des grands modèles de langage et expérimenter leurs usages.
+Trois travaux pratiques sont proposés pour découvrir et approfondir l'IA générative :
+
+1. [**TP1 — Premiers pas avec la génération de texte**](IA%20g%C3%A9n%C3%A9rative/TP1_LangChain_Mistral.md) : prise en main de LangChain et des modèles Mistral pour créer vos premiers prompts structurés.
+2. [**TP2 — Sorties structurées avec LangChain et Mistral**](IA%20g%C3%A9n%C3%A9rative/TP2_Sorties_Structurees.md) : fiabilisation des réponses LLM à l'aide de schémas Pydantic et de chaînes orientées extraction d'informations.
+3. **TP3 — Systèmes RAG et vector stores** *(en préparation)* : conception d'un pipeline de retrieval augmented generation s'appuyant sur des embeddings et une base vectorielle.
