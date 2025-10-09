@@ -29,7 +29,7 @@ La méthode du coude aide à sélectionner un *k* pertinent. On entraîne K-Mean
 Lorsque la courbe forme un coude, cela signifie que l'amélioration marginale de l'inertie devient faible : ce *k* constitue un bon compromis entre compacité des clusters et simplicité du modèle.
 
 > Figure 2 – Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.
-![Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.](illustration_clustering.png)
+![Illustration de la méthode du coude : le point *k* = 5 matérialise un bon équilibre.](illustration_elbow.png)
 
 ## Contexte et objectifs
 
