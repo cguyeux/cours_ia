@@ -18,8 +18,9 @@ Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu p
 6. [**TP6 – Objectifs et métriques XGBoost**](IA%20pr%C3%A9dictive/TP6_XGBoost_Objectif_Metriques/TP6_XGBoost_Objectif_Metriques.md) *(facultatif)* : exploration d'objectifs personnalisés et des métriques avancées pour XGBoost.
 7. [**TP7 – Prétraitement des variables**](IA%20pr%C3%A9dictive/TP7_Pretraitement_Variables/TP_Pretraitement_Variables.md) *(facultatif)* : techniques de sélection, normalisation, encodage et traitement des données déséquilibrées.
 8. [**TP8 – Explicabilité et causalité avec XGBoost**](IA%20pr%C3%A9dictive/TP8_XGBoost_Explicabilite_Causalite/TP8_XGBoost_Explicabilite_Causalite.md) *(facultatif)* : analyse des importances, valeurs SHAP et introduction à l'inférence causale.
+9. [**TP9 – Théorie de l'information et modèles arborescents**](IA%20pr%C3%A9dictive/TP9_Information_Theory/TP9_Information_Theory.ipynb) *(facultatif)* : entropie, information mutuelle et application à un jeu de données synthétique avec XGBoost.
 
-Les TP 6, 7 et 8 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
+Les TP 6 à 9 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
 
 ## IA générative
 
