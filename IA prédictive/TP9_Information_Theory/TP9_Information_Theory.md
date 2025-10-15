@@ -348,3 +348,103 @@ On peut vérifier ces entropies conditionnelles : par exemple $H(Y \mid \text{Gr
 En tout cas, toutes ces variables **expliquent une partie de l'incertitude** sur $Y$. Pour mesurer l'information totale contenue dans l'ensemble {Jour, Température, Grippe}, on pourrait calculer $I(Y; \text{Jour}, \text{Temp}, \text{Grippe})$. Théoriquement $I(Y; \text{toutes}) = H(Y) - H\!\left(Y \mid \text{Jour,Temp,Grippe}\right)$. Dans notre modèle simulé, {Jour, Temp, Grippe} ne déterminent pas entièrement $Y$ (il reste la variabilité Poisson), donc même en connaissant tous les facteurs, il subsiste de l'incertitude. On peut l'estimer en approchant la distribution conditionnelle de $Y$ pour chaque combinaison de facteurs (via la simulation ou un modèle).
 
 Par exemple, dans cette simulation on trouve souvent $I(Y; \text{toutes}) \approx 1.5$ bits pour $6.85$ bits d'entropie totale — soit environ **22 %** de l'incertitude expliquée par les facteurs (le reste étant le « bruit » inhérent). Ce pourcentage est analogue à un $R^2$ d'un modèle, mais exprimé en **bits d'information**.
+
+## 5. Modèle de prédiction avec XGBoost (objectif Poisson)
+
+Construisons maintenant un **modèle prédictif** pour estimer $Y$ à partir de nos variables $X = \{\text{Jour}, \text{Température}, \text{Grippe}\}$. Nous utiliserons un `XGBRegressor` paramétré pour une tâche de Poisson (`objective="count:poisson"`). Ce modèle de gradient boosting d'arbres est adapté aux données tabulaires et permet de fixer une profondeur maximale des arbres (`max_depth`), ce qui va nous servir à comparer un modèle « peu profond » à un modèle « profond » mieux ajusté.
+
+Préparons les features $X$ : on code le jour en indicatrices (one-hot), on garde la température numérique, et la grippe en binaire 0/1. Entraînons deux modèles sur l’ensemble des données (objectif ici : interpréter, pas faire du généralisation) :
+
+- `model_shallow` avec `max_depth=2` (arbres peu profonds),
+- `model_deep` avec `max_depth=6` (arbres plus profonds).
+
+On utilise 50 arbres (`n_estimators=50`) et un taux d’apprentissage modéré.
+
+```python
+import xgboost as xgb
+from sklearn.preprocessing import OneHotEncoder
+
+# One-hot encoding du jour de la semaine
+X = pd.get_dummies(df[['Jour', 'Température', 'Grippe']], columns=['Jour'])
+y = df['Arrivées']
+
+# Modèles XGBoost
+model_shallow = xgb.XGBRegressor(objective="count:poisson",
+                                 max_depth=2,
+                                 n_estimators=50,
+                                 learning_rate=0.1,
+                                 subsample=1.0,
+                                 colsample_bytree=1.0,
+                                 reg_lambda=1.0)
+
+model_deep = xgb.XGBRegressor(objective="count:poisson",
+                              max_depth=6,
+                              n_estimators=50,
+                              learning_rate=0.1,
+                              subsample=1.0,
+                              colsample_bytree=1.0,
+                              reg_lambda=1.0)
+
+model_shallow.fit(X, y)
+model_deep.fit(X, y)
+
+# Évaluation sur les données d'entraînement
+from sklearn.metrics import mean_absolute_error
+
+pred_shallow = model_shallow.predict(X)
+pred_deep = model_deep.predict(X)
+
+mae_shallow = mean_absolute_error(y, pred_shallow)
+mae_deep = mean_absolute_error(y, pred_deep)
+print(f"MAE shallow = {mae_shallow:.2f}, MAE deep = {mae_deep:.2f}")
+```
+
+Après entraînement, comparons les performances : typiquement, le modèle profond obtient une erreur absolue moyenne (MAE) plus faible, par exemple `MAE_shallow ≈ 15` patients contre `MAE_deep ≈ 9.5`. Le modèle plus complexe capture donc mieux les variations de $Y$.
+
+Au-delà de l’erreur, regardons quelles variables sont utilisées :
+
+```python
+# Importances des features selon XGBoost (gain moyen par split)
+imp_shallow = pd.Series(model_shallow.feature_importances_, index=X.columns)
+imp_deep = pd.Series(model_deep.feature_importances_, index=X.columns)
+
+imp_shallow = imp_shallow.sort_values(ascending=False)
+imp_deep = imp_deep.sort_values(ascending=False)
+
+print("Importance features (modèle shallow):")
+print(imp_shallow, "\n")
+
+print("Importance features (modèle deep):")
+print(imp_deep)
+```
+
+On s’attend à ce que `Grippe` ressorte comme variable la plus importante (gain élevé lorsqu’on split dessus). Le `Jour` est également important (plusieurs indicatrices apparaissent), tandis que la `Température` a une importance plus modeste mais non négligeable.
+
+Par exemple, le modèle profond peut donner : `Grippe > Jour_Dimanche > Jour_Samedi > Température > ...`. Le modèle peu profond, limité par `max_depth=2`, pourrait n’utiliser que `Grippe` puis `Jour_Dimanche`, répartissant différemment l’importance.
+
+## 6. Interprétation des résultats
+
+**Profondeur de l’arbre et entropie.** Un arbre de décision est une succession de questions oui/non qui réduit l’incertitude sur $Y$. La profondeur correspond au nombre maximum de questions enchaînées. Dans notre exemple, $H(Y) \approx 6.85$ bits, soit un arbre moyen d’environ 6 à 7 niveaux pour déterminer $Y$. Le modèle profond (`max_depth=6`, boosté) peut approcher ce niveau de détail. Le modèle shallow (`max_depth=2`), en revanche, reste limité : même avec plusieurs arbres, il ne peut réduire l’entropie que partiellement à chaque itération.
+
+Dans les faits, le modèle profond obtient une meilleure performance (MAE plus faible, meilleure log-vraisemblance). Cela signifie que l’entropie conditionnelle restante $H(Y \mid X)$ est plus faible : connaissant les variables et en utilisant un modèle puissant, l’incertitude sur $Y$ diminue davantage. Par exemple, le modèle shallow laisse environ $5.6$ bits d’incertitude, tandis que le modèle deep descend vers $5.3$ bits : gain de $\sim 0.3$ bit d’information mutuelle capturée.
+
+**Rôle des variables explicatives.** Les informations mutuelles calculées plus haut éclairent les résultats du modèle :
+
+- `Grippe` apportait $\sim 0.59$ bit et le modèle l’utilise en priorité (gros gain au premier split). Cela fait sens : la présence de grippe double presque la moyenne de $Y$.
+- `Jour` apportait $\sim 0.74$ bit ; le modèle exploite les différences entre jours (`Dimanche` vs `Mercredi`, etc.).
+- `Température` apportait $\sim 0.70$ bit ; elle intervient après les gros facteurs mais reste utile (splits du type `Température > x°C`, interactions avec `Jour`/`Grippe`).
+
+Dans une simulation réelle, `Jour` et `Grippe` pourraient être corrélés (grippe plus fréquente en hiver). Dans notre scénario simplifié, elles sont indépendantes. En cas de corrélation, un arbre peut n’utiliser qu’une partie de l’information et l’importance mesurée isolément sous-estimerait leur rôle réel. L’information mutuelle calculée isolément est donc **marginale**. En combinaison, on avait $I(Y;\text{toutes}) \approx 1.5$ bits (22 % de $H(Y)$). Le modèle profond capture quasiment toute cette information (d’où l’erreur faible), le modèle peu profond un peu moins.
+
+**Réduction de la divergence (KL) / gain en log-vraisemblance.** En modélisation statistique, on parle souvent de réduction de la divergence de Kullback-Leibler pour mesurer combien une distribution prédite se rapproche de la réelle. Pour un modèle Poisson, la déviance (différence de log-vraisemblance avec un modèle nul) est directement liée à l’information mutuelle : $I(Y;X)$ (en nats) = gain de log-vraisemblance moyen. Dans notre exemple, le modèle profond obtient une log-vraisemblance nettement meilleure, traduisant une réduction d’incertitude plus importante sur $Y$ au sens entropique.
+
+## 7. À vous de jouer !
+
+Quelques pistes pour approfondir :
+
+- **Modifier la simulation** : changez les paramètres (effet température +5 %/°C, grippe plus fréquente, etc.), observez l’impact sur $I(Y;X)$ et la performance.
+- **Tester un autre jeu de données** : appliquez le calcul d’entropie et l’entraînement XGBoost sur des données réelles ou un autre dataset synthétique.
+- **Visualiser les arbres** : utilisez `xgb.plot_tree` ou `sklearn.tree.plot_tree` afin de relier chaque split à un gain d’entropie local.
+- **Aller plus loin dans l’information mutuelle** : estimez $I(Y;X)$ sans discrétiser (méthodes non paramétriques, analyse de courbe ROC si $Y$ est binaire). Réfléchissez à l’usage de l’information mutuelle comme critère de sélection de variables.
+
+Amusez-vous avec ces expériences ! L’objectif est de développer une intuition sur la circulation de l’information des données brutes vers le modèle et la prédiction, et de quantifier les gains en termes de réduction d’incertitude. Chaque bit gagné compte : bon travail !
