@@ -150,7 +150,7 @@ Jusqu'ici, nous avons traité une seule variable. En data science, on étudie so
 **Entropie conjointe et conditionnelle.** Si l'on considère deux variables $X$ et $Y$, on peut définir l'entropie conjointe $H(X,Y)$ sur leur distribution commune, et l'entropie conditionnelle de $Y$ sachant $X$. L'entropie conditionnelle $H(Y \mid X)$ représente l'incertitude qui reste sur $Y$ quand on connaît la valeur de $X$. Formulée en probabilités :
 
 $$
-H(Y \mid X) = \sum_x P(X = x) \, H(Y \mid X = x).
+H(Y \mid X) = \sum_x P(X = x) H(Y \mid X = x).
 $$
 
 C'est la moyenne (pondérée par $P(X=x)$) des entropies de $Y$ dans chaque sous-population où $X=x$. On a toujours $H(Y \mid X) \le H(Y)$ : connaître $X$ ne peut pas augmenter l'incertitude sur $Y$ (au pire, $X$ est indépendant de $Y$ et on n'enlève aucune incertitude, $H(Y \mid X)=H(Y)$).
