@@ -23,12 +23,10 @@ L'unité est le **bit** si l'on utilise le logarithme en base 2. Intuitivement, 
 
 ### Exemples simples
 
-- Une pièce équilibrée (pile ou face équiprobables) a une entropie de **1 bit**, car une question oui/non suffit en moyenne à deviner l'issue.
-- Une pièce biaisée (qui tombe face 70 % du temps) a une entropie plus faible : l'incertitude est partiellement réduite car une issue est favorisée.
-- Un dé à 6 faces équilibré a une entropie plus élevée (~2.585 bits), car il y a 6 issues équiprobables.
-- Un dé biaisé (40 % une face, 20 % une autre, le reste à 10 %) présente une entropie intermédiaire.
-
-Calculons ces entropies avec Python.
+- Une pièce équilibrée (pile ou face équiprobables) a une entropie de **1 bit**, car une question oui/non suffit en moyenne à deviner l'issue. Exemple de question : *« Est-ce face ? »*. Si la réponse est oui, on connaît immédiatement l'issue ; sinon c'est pile.
+- Une pièce biaisée (qui tombe face 70 % du temps) a une entropie plus faible : l'incertitude est partiellement réduite car une issue est favorisée. Une stratégie de questions serait *« Est-ce face ? »* ; on devine plus souvent correctement qu'avec une pièce équilibrée.
+- Un dé à 6 faces équilibré a une entropie plus élevée (~2.585 bits), car il y a 6 issues équiprobables. Il faut en moyenne poser plusieurs questions binaires comme *« Est-ce un numéro supérieur ou égal à 4 ? »*, puis *« Est-ce pair ? »*, etc., pour identifier la face.
+- Un dé biaisé (40 % une face, 20 % une autre, le reste à 10 %) présente une entropie intermédiaire. On peut d'abord demander *« Est-ce la face la plus probable ? »*. Si la réponse est non, on raffine avec des questions ciblant les autres faces.
 
 
 ```python
