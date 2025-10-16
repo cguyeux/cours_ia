@@ -1,0 +1,36 @@
+# Cours d'introduction à l'IA
+
+## Objectifs du cours
+- Comprendre les principales familles de problèmes d'intelligence artificielle.
+- Manipuler des jeux de données tabulaires avec Python et la bibliothèque pandas.
+- Mettre en œuvre des algorithmes de machine learning pour la classification et la régression.
+- Savoir évaluer et améliorer les performances des modèles en utilisant des métriques adaptées et des techniques de préparation des données.
+
+## IA "prédictive"
+
+Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu proposer un contenu exhaustif afin de s'adapter aux profils variés des étudiants.
+
+1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage.
+2. [**TP2 – Clustering**](IA%20pr%C3%A9dictive/TP2_Clustering/TP2_Clustering_Enonce.md) : mise en œuvre d'algorithmes de regroupement non supervisé (k-means, analyse visuelle de l'inertie, etc.).
+3. [**TP3 – Classification supervisée**](IA%20pr%C3%A9dictive/TP3_Classification/TP_Classification_Apprentissage_Supervise_Enonce_v3.md) : application d'algorithmes de classification et évaluation des performances.
+4. [**TP4 – XGBoost avancé**](IA%20pr%C3%A9dictive/TP4_XGBoost/TP4_XGBoost_Avance.md) : découverte et paramétrage d'un modèle de gradient boosting pour la classification.
+5. [**TP5 – Régression**](IA%20pr%C3%A9dictive/TP5_Regression/TP5_Regression_Validation.md) : mise en place d'un pipeline de régression et analyse des métriques associées.
+6. [**TP6 – Séries temporelles**](IA%20pr%C3%A9dictive/TP6_Series_Temporelles/TP6_Series_Temporelles.md) : exploration, préparation et prévision d'une série hebdomadaire de CO₂ atmosphérique.
+7. [**TP7 – Objectifs et métriques XGBoost**](IA%20pr%C3%A9dictive/TP7_XGBoost_Objectifs_Metriques/TP7_XGBoost_Objectifs_Metriques.md) *(facultatif)* : exploration d'objectifs personnalisés et des métriques avancées pour XGBoost.
+8. [**TP8 – Prétraitement des variables**](IA%20pr%C3%A9dictive/TP8_Pretraitement_Variables/TP8_Pretraitement_Variables.md) *(facultatif)* : techniques de sélection, normalisation, encodage et traitement des données déséquilibrées.
+9. [**TP9 – Explicabilité et causalité avec XGBoost**](IA%20pr%C3%A9dictive/TP9_XGBoost_Explicabilite_Causalite/TP9_XGBoost_Explicabilite_Causalite.md) *(facultatif)* : analyse des importances, valeurs SHAP et introduction à l'inférence causale.
+10. [**TP10 – Théorie de l'information et modèles arborescents**](IA%20pr%C3%A9dictive/TP10_Theorie_Information/TP10_Theorie_Information.md) *(facultatif)* : entropie, information mutuelle et application à un jeu de données synthétique avec XGBoost.
+
+Les TP 7 à 10 sont proposés pour aller plus loin et peuvent être réalisés en autonomie en fonction de votre progression.
+
+## IA générative
+
+Trois travaux pratiques sont proposés pour découvrir et approfondir l'IA générative :
+
+1. [**TP1 — Premiers pas avec la génération de texte**](IA%20g%C3%A9n%C3%A9rative/TP1_Premiers_Pas_LangChain_Mistral.md) : prise en main de LangChain et des modèles Mistral pour créer vos premiers prompts structurés.
+2. [**TP2 — Sorties structurées avec LangChain et Mistral**](IA%20g%C3%A9n%C3%A9rative/TP2_Sorties_Structurees.md) : fiabilisation des réponses LLM à l'aide de schémas Pydantic et de chaînes orientées extraction d'informations.
+3. [**TP3 — Systèmes RAG et bases vectorielles**](IA%20g%C3%A9n%C3%A9rative/TP3_RAG_Vecteurs.md) : conception d'un pipeline de retrieval augmented generation s'appuyant sur des embeddings et une base vectorielle.
+4. [**TP4 — Les agents**](IA%20g%C3%A9n%C3%A9rative/TP4_Agents_LangChain.md) : orchestration d’agents LangChain capables de planifier des actions, d’appeler des outils (APIs, fonctions Python) et de coordonner un flux de résolution multi-étapes.
+5. [**TP5 — Multimodalité et IA générative**](IA%20g%C3%A9n%C3%A9rative/TP5_Multimodalite.md) : intégration de pipelines texte ↔ audio ↔ image avec les API OpenAI (synthèse vocale, transcription, vision et génération d’images).
+
+⚠️ Pour exécuter les exemples de ce TP5, une clé d’API OpenAI valide est nécessaire et doit être configurée dans votre environnement (`OPENAI_API_KEY`).
