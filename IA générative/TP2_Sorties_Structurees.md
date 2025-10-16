@@ -1,6 +1,6 @@
 # TP2 — Sorties structurées avec LangChain et Mistral (≈ 1h30)
 
-[⬅️ Retour au README](../README.md)
+[⬅️ Retour au sommaire](../LISEZMOI.md)
 
 ## Objectifs
 

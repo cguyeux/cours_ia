@@ -1,6 +1,6 @@
 # TP4 — Orchestration d'agents avec LangChain (≈ 2h)
 
-[⬅️ Retour au README](../README.md)
+[⬅️ Retour au sommaire](../LISEZMOI.md)
 
 ## Objectifs
 

@@ -1,6 +1,6 @@
 # TP 4 : XGBoost avancé et gestion d'un ensemble de validation
 
-[⬅️ Retour au README](../../README.md)
+[⬅️ Retour au sommaire](../../LISEZMOI.md)
 
 ## Objectifs pédagogiques
 

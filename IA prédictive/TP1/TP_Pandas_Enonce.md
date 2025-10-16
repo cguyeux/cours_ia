@@ -1,6 +1,6 @@
 # TP Pandas (≈ 1h) — Dataset Iris
 
-[⬅️ Retour au README](../../README.md)
+[⬅️ Retour au sommaire](../../LISEZMOI.md)
 
 ## Objectifs
 
