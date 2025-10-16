@@ -15,7 +15,7 @@ Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu p
 3. [**TP3 – Classification supervisée**](IA%20pr%C3%A9dictive/TP3_Classification/TP_Classification_Apprentissage_Supervise_Enonce_v3.md) : application d'algorithmes de classification et évaluation des performances.
 4. [**TP4 – XGBoost avancé**](IA%20pr%C3%A9dictive/TP4_XGBoost/TP4_XGBoost_Avance.md) : découverte et paramétrage d'un modèle de gradient boosting pour la classification.
 5. [**TP5 – Régression**](IA%20pr%C3%A9dictive/TP5_Regression/TP5_Regression_Validation.md) : mise en place d'un pipeline de régression et analyse des métriques associées.
-6. [**TP6 – Séries temporelles**](IA%20pr%C3%A9dictive/TP6_Series_Temporelles/TP6_Series_Temporelles.md) : exploration, préparation et prévision d'une série hebdomadaire de CO₂ atmosphérique.
+6. [**TP6 – Séries temporelles**](IA%20pr%C3%A9dictive/TP6_Series_Temporelles/TP6_Series_Temporelles_Index.md) : parcours guidé (exploration, stationnarité, AR/ARIMA, modèles supervisés).
 7. [**TP7 – Objectifs et métriques XGBoost**](IA%20pr%C3%A9dictive/TP7_XGBoost_Objectifs_Metriques/TP7_XGBoost_Objectifs_Metriques.md) *(facultatif)* : exploration d'objectifs personnalisés et des métriques avancées pour XGBoost.
 8. [**TP8 – Prétraitement des variables**](IA%20pr%C3%A9dictive/TP8_Pretraitement_Variables/TP8_Pretraitement_Variables.md) *(facultatif)* : techniques de sélection, normalisation, encodage et traitement des données déséquilibrées.
 9. [**TP9 – Explicabilité et causalité avec XGBoost**](IA%20pr%C3%A9dictive/TP9_XGBoost_Explicabilite_Causalite/TP9_XGBoost_Explicabilite_Causalite.md) *(facultatif)* : analyse des importances, valeurs SHAP et introduction à l'inférence causale.
