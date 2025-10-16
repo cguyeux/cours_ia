@@ -30,3 +30,6 @@ Trois travaux pratiques sont proposés pour découvrir et approfondir l'IA gén�
 2. [**TP2 — Sorties structurées avec LangChain et Mistral**](IA%20g%C3%A9n%C3%A9rative/TP2_Sorties_Structurees.md) : fiabilisation des réponses LLM à l'aide de schémas Pydantic et de chaînes orientées extraction d'informations.
 3. [**TP3 — Systèmes RAG et vector stores**](IA%20g%C3%A9n%C3%A9rative/TP3_RAG_Embeddings.md) : conception d'un pipeline de retrieval augmented generation s'appuyant sur des embeddings et une base vectorielle.
 4. [**TP4 — Les agents**](IA%20g%C3%A9n%C3%A9rative/TP4_Agents_LangChain.md) : orchestration d’agents LangChain capables de planifier des actions, d’appeler des outils (APIs, fonctions Python) et de coordonner un flux de résolution multi-étapes.
+5. [**TP5 — Multimodalité et IA générative**](IA%20g%C3%A9n%C3%A9rative/TP5_Multimodal.md) : intégration de pipelines texte ↔ audio ↔ image avec les API OpenAI (synthèse vocale, transcription, vision et génération d’images).
+
+⚠️ Pour exécuter les exemples de ce TP5, une clé d’API OpenAI valide est nécessaire et doit être configurée dans votre environnement (`OPENAI_API_KEY`).

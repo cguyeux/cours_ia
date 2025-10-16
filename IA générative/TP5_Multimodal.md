@@ -189,7 +189,7 @@ def describe_image(image_path: str, question: str) -> str:
                 "role": "user",
                 "content": [
                     {"type": "input_text", "text": question},
-                    {"type": "input_image", "image_url": {"url": data_url}},
+                    {"type": "input_image", "image_url": data_url},
                 ],
             }
         ],
