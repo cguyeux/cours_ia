@@ -187,6 +187,53 @@ diff = serie.diff().dropna()
 - **Exercice 5.** Retirez la saisonnalité estimée et affichez les résidus. Quels créneaux horaires présentent encore des
   irrégularités fortes ? Formulez une hypothèse métier (météo, événements, vacances scolaires...).
 
+### Modèle AR (AutoRegressive)
+
+- **Principe.** Un modèle AR($p$) prédit la valeur courante à partir des $p$ observations précédentes :
+  $$
+  y_t = c + \phi_1 y_{t-1} + \dots + \phi_p y_{t-p} + \varepsilon_t
+  $$
+  où $\varepsilon_t$ est un bruit blanc. Ce modèle capture la **mémoire courte** détectée via l'autocorrélation.
+
+- **Quand l'utiliser ?** Lorsque l'ACF/PACF montre des corrélations fortes sur les premiers lags et que la série a été rendue
+  stationnaire (par différenciation ou retrait de tendance/saisonnalité).
+
+- **Mise en œuvre rapide (statsmodels).**
+
+```python
+from statsmodels.tsa.ar_model import AutoReg
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+y = serie.values
+train_size = int(len(y) * 0.8)
+train, test = y[:train_size], y[train_size:]
+
+model = AutoReg(train, lags=24)  # AR(24) pour capturer un cycle journalier
+model_fit = model.fit()
+
+pred = model_fit.predict(start=train_size, end=len(y)-1)
+rmse = mean_squared_error(test, pred, squared=False)
+print(f"RMSE test : {rmse:.2f}")
+```
+
+- **Interprétation des coefficients.** `model_fit.params` fournit $c$ et les $\phi_i$. Un coefficient élevé sur `lag 1` signifie
+  que la valeur précédente est très informative. Des coefficients proches de zéro sur des lags élevés indiquent que l'ordre $p$
+  peut être réduit.
+
+- **Sélection de l'ordre $p$.** Inspirez-vous de la PACF : le premier lag qui chute dans la zone de confiance suggère un ordre
+  raisonnable. Vous pouvez aussi comparer l'AIC fournie par `model_fit.aic` pour plusieurs valeurs de `lags`.
+
+- **Limitations.** Un AR pur ne prédit bien que sur un horizon court : les erreurs s'accumulent lorsque l'on itère les prédictions
+  (forecasts récursifs). Il ne capture pas la saisonnalité longue ni les ruptures de tendance.
+
+- **Exercice 1.** Entraînez des modèles AR avec `lags=6`, `lags=12`, `lags=24` et comparez RMSE et AIC. Quel compromis retenez-vous ?
+- **Exercice 2.** Visualisez `test[:24*7]` et les prédictions correspondantes. Comment le modèle se comporte-t-il sur une semaine ?
+- **Exercice 3.** Itérez la prédiction sur 7 jours (utilisez la sortie du modèle comme entrée des étapes suivantes). Comment
+  l'erreur évolue-t-elle ? Quelles stratégies pour y remédier (ARIMA, SARIMA, ajout de variables explicatives) ?
+- **Exercice 4.** Analysez `model_fit.params`. Quelles heures du passé (lags) influencent le plus la location de vélos ? Reliez ces
+  observations à vos analyses de saisonnalité.
+
 ## Partie 1 – Exploration temporelle
 
 ### 1.1 Chargement et nettoyage (notebook)
