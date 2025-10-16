@@ -100,6 +100,93 @@ serie = serie.fillna(method="ffill")  # comble les rares trous horaires
 > Ces visualisations constituent votre **check-list** avant de passer à la modélisation : elles orientent le choix des features, la
 > granularité des modèles et les métriques à surveiller.
 
+### Autocorrélation et corrélations retardées
+
+- **Définition.** L'autocorrélation au lag $k$ mesure la corrélation linéaire entre $y_t$ et $y_{t-k}$. Elle quantifie la mémoire de la
+  série : une valeur proche de 1 signifie que la série « se ressemble » d'une période à l'autre.
+- **Pourquoi la mesurer ?** Pour identifier des dépendances temporelles (ex. effet d'inertie, saisons hebdomadaires) et guider le
+  choix d'un horizon de prédiction ou d'un modèle (ARIMA, régression avec lags).
+
+```python
+serie.autocorr(lag=1)      # corrélation entre t et t-1
+serie.autocorr(lag=24)     # corrélation sur un décalage journalier
+```
+
+- **Lag plots.** `pd.plotting.lag_plot(serie, lag=k)` affiche un nuage de points $(y_{t-k}, y_t)$. Une diagonale marquée révèle une
+  forte autocorrélation. La fonction `pd.plotting.lag_plot` peut être utilisée en sous-graphiques pour plusieurs lags.
+- **Fonctions ACF/PACF.** Utilisez `statsmodels.graphics.tsaplots.plot_acf` et `plot_pacf` pour visualiser les autocorrélations
+  sur plusieurs dizaines de lags avec des intervalles de confiance.
+
+```python
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 2, figsize=(14, 4))
+sm.graphics.tsa.plot_acf(serie, lags=48, ax=axes[0])
+sm.graphics.tsa.plot_pacf(serie, lags=48, ax=axes[1], method="ywm")
+```
+
+- **Exemple métier.** Sur les locations de vélos, un pic d'autocorrélation à $k=24$ signale un comportement similaire d'un jour sur
+  l'autre ; un pic à $k=24 \times 7$ met en évidence la routine hebdomadaire (week-ends plus calmes).
+
+- **Exercice 1.** Calculez et interprétez `serie.autocorr(lag=1)`, `lag=24` et `lag=168`. Quelle lecture en faites-vous pour le
+  service de vélos ? Lesquels de ces lags intégreriez-vous dans vos features ?
+- **Exercice 2.** Tracez un lag plot pour `lag=1` et `lag=24`. Comparez la dispersion des points et expliquez la différence.
+- **Exercice 3.** À l'aide de `plot_acf`, identifiez le premier lag dont la valeur retombe dans l'intervalle de confiance (zone
+  gris clair). Que signifie ce point pour le paramètre $q$ d'un modèle ARIMA ?
+
+### Tendance et saisonnalité
+
+- **Composantes d'une série.** Toute série peut être vue comme une combinaison d'un niveau moyen, d'une **tendance** (croissance ou
+  décroissance à long terme), d'une **saisonnalité** (motif périodique) et d'un **résidu** (bruit). On distingue les modèles
+  additifs ($y_t = \text{niveau} + \text{tendance} + \text{saisonnalité} + \text{bruit}$) et multiplicatifs
+  ($y_t = \text{niveau} \times \text{tendance} \times \text{saisonnalité} \times \text{bruit}$). La nature du modèle dépend de la
+  manière dont l'amplitude saisonnière varie : constante (additif) ou proportionnelle au niveau (multiplicatif).
+
+- **Décomposition automatique.** `statsmodels.tsa.seasonal_decompose` sépare la série selon une période donnée :
+
+```python
+from statsmodels.tsa.seasonal import seasonal_decompose
+
+result = seasonal_decompose(serie, model="additive", period=24)
+result.plot()
+plt.show()
+```
+
+  - **Trend** : évolution lissée (ex. hausse progressive des locations de vélos avec l'expansion du service).
+  - **Seasonal** : motif récurrent (ex. pics matin/soir chaque jour).
+  - **Resid** : ce qui reste à expliquer (aléas météo, événements ponctuels).
+
+- **Exemple métier.** Pour un gestionnaire de flotte, la tendance aide à planifier les achats de vélos sur l'année ; la saisonnalité
+  horaire indique les horaires de renfort d'équipes ; le résidu alerte sur des anomalies (pannes massives, grèves...).
+
+- **Choisir la période.** Pour la série horaire des vélos, testez `period=24` (cycle journalier) puis `period=24*7` (cycle
+  hebdomadaire). Comparez les graphiques obtenus.
+
+- **Exercice 1.** Exécutez la décomposition additive avec `period=24` et interprétez chaque composante. Quels éléments confirment vos
+  observations issues des histogrammes et de l'autocorrélation ?
+- **Exercice 2.** Changez `model="multiplicative"` et comparez la courbe saisonnière. Dans quel cas ce modèle serait-il plus adapté
+  (indice : lorsque l'amplitude des pics augmente avec le niveau moyen) ?
+
+- **Suppression de tendance (differencing).** Pour travailler sur une série stationnaire, on peut différencier :
+
+```python
+diff = serie.diff().dropna()
+```
+
+  Cela réduit les dérives lentes et facilite l'entraînement de modèles ARIMA. Visualisez `diff.plot()` pour vérifier que la tendance
+  a été atténuée.
+
+- **Ajustement saisonnier.** En soustrayant la composante saisonnière estimée (`serie - result.seasonal`) ou en utilisant
+  `diff = serie.diff(periods=24)`, on obtient une série plus stable. Utile pour isoler les effets météo ou marketing.
+
+- **Exercice 3.** Calculez `serie.diff(periods=24)` et comparez la variance avant/après. Quelle conclusion tirez-vous pour le choix
+  de la période de différenciation dans un modèle SARIMA ?
+- **Exercice 4.** Construisez un modèle simple de saisonnalité en ajustant un polynôme sur les heures de la journée (ex.
+  `np.polyfit` sur `hour -> count`). Superposez ce polynôme à la courbe d'un jour typique : que met-il en évidence ?
+- **Exercice 5.** Retirez la saisonnalité estimée et affichez les résidus. Quels créneaux horaires présentent encore des
+  irrégularités fortes ? Formulez une hypothèse métier (météo, événements, vacances scolaires...).
+
 ## Partie 1 – Exploration temporelle
 
 ### 1.1 Chargement et nettoyage (notebook)
