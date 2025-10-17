@@ -14,5 +14,8 @@ wheels/
 # Virtual environments
 .venv
 
+# API Keys
+.env
+
 # Project-specific
 Cours/but3/
