@@ -19,15 +19,18 @@
 from sklearn.datasets import fetch_openml
 import pandas as pd
 
-raw = fetch_openml(name="Bike_Sharing_Demand", version=1, as_frame=True)
-df = raw.frame
-df["datetime"] = pd.to_datetime(df["datetime"])
+df = pd.read_csv("train.csv", parse_dates=["datetime"])
+
 serie = df.set_index("datetime")["count"].sort_index()
-serie = serie.asfreq("H")  # impose la fréquence horaire
-serie = serie.fillna(method="ffill")
+
+print(f"Nb de valeurs manquantes : {serie.isna().sum()}")
+serie = serie.asfreq("h")  # impose la fréquence horaire
+serie = serie.ffill()
+print(f"Nb de valeurs manquantes : {serie.isna().sum()}")
+
+serie.index.inferred_freq
 
 serie.head()
-serie.index.inferred_freq
 ```
 
 > 💡 Conservez `df` : les colonnes météo (`temp`, `humidity`, etc.) pourront être utiles dans les sous-TP suivants.
