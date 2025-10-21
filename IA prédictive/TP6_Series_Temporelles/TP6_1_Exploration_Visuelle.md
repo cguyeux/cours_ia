@@ -13,7 +13,7 @@
 
 1. Créez un notebook `TP6_1_exploration.ipynb`.
 2. Installez (si besoin) les dépendances : `pip install pandas matplotlib seaborn scikit-learn statsmodels`.
-3. Téléchargez le dataset (extrait d’OpenML) :
+3. Téléchargez le dataset fourni (train.csv) :
 
 ```python
 from sklearn.datasets import fetch_openml
