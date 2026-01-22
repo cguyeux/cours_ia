@@ -1,6 +1,7 @@
 # Cours d'introduction à l'IA
 
 ## Objectifs du cours
+
 - Comprendre les principales familles de problèmes d'intelligence artificielle.
 - Manipuler des jeux de données tabulaires avec Python et la bibliothèque pandas.
 - Mettre en œuvre des algorithmes de machine learning pour la classification et la régression.
@@ -10,7 +11,7 @@
 
 Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu proposer un contenu exhaustif afin de s'adapter aux profils variés des étudiants.
 
-1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage.
+1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage. ➡️ [Version enrichie](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enrichi_Enonce.md)
 2. [**TP2 – Clustering**](IA%20pr%C3%A9dictive/TP2_Clustering/TP2_Clustering_Enonce.md) : mise en œuvre d'algorithmes de regroupement non supervisé (k-means, analyse visuelle de l'inertie, etc.).
 3. [**TP3 – Classification supervisée**](IA%20pr%C3%A9dictive/TP3_Classification/TP_Classification_Apprentissage_Supervise_Enonce_v3.md) : application d'algorithmes de classification et évaluation des performances.
 4. [**TP4 – XGBoost avancé**](IA%20pr%C3%A9dictive/TP4_XGBoost/TP4_XGBoost_Avance.md) : découverte et paramétrage d'un modèle de gradient boosting pour la classification.
