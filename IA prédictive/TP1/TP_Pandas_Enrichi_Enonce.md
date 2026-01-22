@@ -151,3 +151,7 @@
 
 - 2h (parties 1-7)
 - +30 min pour les bonus
+
+---
+
+📘 **[Accéder au corrigé](TP_Pandas_Enrichi_Corrige.ipynb)**
