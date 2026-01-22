@@ -11,7 +11,7 @@
 
 Le but n'est pas forcément de réaliser tous les exercices : nous avons voulu proposer un contenu exhaustif afin de s'adapter aux profils variés des étudiants.
 
-1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage. ➡️ [Version enrichie](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enrichi_Enonce.md)
+1. [**TP1 – Découverte de pandas**](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce.md) : prise en main de la manipulation de données tabulaires et des opérations courantes de nettoyage. ([English version](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enonce_EN.md)) ➡️ [Version enrichie](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enrichi_Enonce.md) ([English version](IA%20pr%C3%A9dictive/TP1/TP_Pandas_Enrichi_Enonce_EN.md))
    - [**TP1bis – Introduction à GeoPandas**](IA%20pr%C3%A9dictive/TP1/TP1bis_GeoPandas_Enonce.md) : manipulation de données géospatiales, CRS, opérations spatiales et cartographie thématique.
 2. [**TP2 – Clustering**](IA%20pr%C3%A9dictive/TP2_Clustering/TP2_Clustering_Enonce.md) : mise en œuvre d'algorithmes de regroupement non supervisé (k-means, analyse visuelle de l'inertie, etc.). ➡️ [Version avancée](IA%20pr%C3%A9dictive/TP2_Clustering/TP2_Clustering_Avance_Enonce.md)
    - [**TP2bis – Réduction de dimension**](IA%20pr%C3%A9dictive/TP2_Clustering/TP2bis_Reduction_Dimension_Enonce.md) : PCA, t-SNE, UMAP, LDA et autres techniques de visualisation haute dimension.
